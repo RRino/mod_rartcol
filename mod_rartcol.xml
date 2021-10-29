@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>MOD_RARTCOL</name>
+	<creationDate>22/07/2021</creationDate>
+	<author>Rino Ruggeri</author>
+	<authorEmail>rino.ruggeri@gmail.com</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.0.5</version>
+	<description>MOD_RARTCOL_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<namespace path="src">RartcolNamespace\Module\Rartcol</namespace>
+	<files>
+		<filename module="mod_rartcol">mod_rartcol.php</filename>
+		<folder>tmpl</folder>
+		<folder>Helper</folder>
+		<folder>language</folder>
+		<filename>mod_rartcol.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="rartcolparams">
+
+
+				<field 
+				  name="menurartcol" 
+			      type="text" 
+				  label="ID menu RARTCOL" 
+				  description="Mettere l'ID dell'articolo che richiama il modulo mod_rartcol" 
+				  size="10" 
+				  hint="14" 
+				/>
+ 
+               	<field 
+				  name="menugestione" 
+			      type="text" 
+				  label="Nome menu GESTIONE ISCRITTI" 
+				  description="Mettere alias menu  che richiama il modulo mod_gestione" 
+				  size="10" 
+				  hint="15" 
+				/>
+
+
+				<field 
+				  name="menuadd" 
+			      type="text" 
+				  label="Nome menu ADDRARTCOL" 
+				  description="Mettere alias menu  che richiama il modulo mod_rartcoladd" 
+				  size="10" 
+				  hint="37" 
+				/>
+
+				<field 
+				  name="menuiscrizioni" 
+			      type="text" 
+				  label="Nome menu ISCRIZIONI" 
+				  description="Mettere alias menu che richiama il modulo mod_rartcoliscriz" 
+				  size="10" 
+				  hint="35" 
+				/>
+ 				<field 
+				  name="idGroupUsers" 
+			      type="text" 
+				  label="Id del Gruppo abilitato ad aggiungere rartcol" 
+				  description="Dopo creato un gruppo 'AddRartcol' da Publiscer, inserire il numero ID del gruppo" 
+				  size="10" 
+				  hint="35" 
+				/>
+
+ 				<field 
+				  name="idGroupGestIscritti" 
+			      type="text" 
+				  label="Id del Gruppo abilitato alla gestione iscritti" 
+				  description="Dopo creato un gruppo 'AddRartcol' da Publiscer, inserire il numero ID del gruppo" 
+				  size="10" 
+				  hint="3" 
+				/>
+
+			</fieldset>
+		</fields>
+	</config>
+</extension>
