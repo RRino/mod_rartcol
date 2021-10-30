@@ -24,57 +24,31 @@
 
 
 				<field 
-				  name="menurartcol" 
+				  name="maxmenorecenti" 
 			      type="text" 
-				  label="ID menu RARTCOL" 
-				  description="Mettere l'ID dell'articolo che richiama il modulo mod_rartcol" 
+				  label="Articoli meno recenti" 
+				  description="Articoli appaiono nell'ultimo box" 
 				  size="10" 
-				  hint="14" 
-				/>
- 
-               	<field 
-				  name="menugestione" 
-			      type="text" 
-				  label="Nome menu GESTIONE ISCRITTI" 
-				  description="Mettere alias menu  che richiama il modulo mod_gestione" 
-				  size="10" 
-				  hint="15" 
-				/>
-
-
-				<field 
-				  name="menuadd" 
-			      type="text" 
-				  label="Nome menu ADDRARTCOL" 
-				  description="Mettere alias menu  che richiama il modulo mod_rartcoladd" 
-				  size="10" 
-				  hint="37" 
-				/>
-
-				<field 
-				  name="menuiscrizioni" 
-			      type="text" 
-				  label="Nome menu ISCRIZIONI" 
-				  description="Mettere alias menu che richiama il modulo mod_rartcoliscriz" 
-				  size="10" 
-				  hint="35" 
-				/>
- 				<field 
-				  name="idGroupUsers" 
-			      type="text" 
-				  label="Id del Gruppo abilitato ad aggiungere rartcol" 
-				  description="Dopo creato un gruppo 'AddRartcol' da Publiscer, inserire il numero ID del gruppo" 
-				  size="10" 
-				  hint="35" 
+				  hint="10" 
 				/>
 
  				<field 
-				  name="idGroupGestIscritti" 
+				  name="maxbox" 
 			      type="text" 
-				  label="Id del Gruppo abilitato alla gestione iscritti" 
-				  description="Dopo creato un gruppo 'AddRartcol' da Publiscer, inserire il numero ID del gruppo" 
+				  label="Numero Articoli " 
+				  description="Articoli nei box" 
 				  size="10" 
-				  hint="3" 
+				  hint="5" 
+				/>
+         
+		 				
+ 				<field 
+				  name="catid" 
+			      type="text" 
+				  label="Categoria Articoli" 
+				  description="Numero della categoria da visualizzare" 
+				  size="10" 
+				  hint="5" 
 				/>
 
 			</fieldset>

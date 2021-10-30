@@ -39,13 +39,18 @@ jimport('joomla.filesystem.file');
 $document = Factory::getDocument ();
 $jinput = Factory::getApplication ()->input;
 
+//Module parameters from outside a module
+$module = JModuleHelper::getModule('mod_rartcol'); 
+$moduleParams = new JRegistry(); 
+$moduleParams->loadString($module->params); 
 
-$articoli = '';
+$maxmenorecnti = $moduleParams->get('maxmenorecenti', '5');
+$maxbox = $moduleParams->get('maxmenorecenti', '3');
+$catid = $moduleParams->get('catid', '3');
 
-echo RartcolHelper::getText();
+$maxmenorecnti = $maxbox + $maxmenorecnti;
+$maxart = $maxbox +  $maxmenorecnti;;//max articoli
 
-$catid = 14;//blog
-$maxart = 10 ;//max articoli
 $articoli = RartcolHelper::get_articles_category($catid,$maxart);
 
 

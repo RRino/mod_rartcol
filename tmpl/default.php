@@ -24,60 +24,92 @@ use RartcolNamespace\Module\Rartcol\Site\Helper\RartcolHelper;
 <?php $gap = '1rem'; ?>
 <?php
  $n_articoli = count($articoli);
- $imag_def = '<img src="http://caibo.it/images/rivista_sul_monte/sul-monte.png" alt="sul monte" width="447" height="174" style="display: block; margin-left: auto; margin-right: auto;">';
+ $imag_def = '<img src="images/Loghi/notizie.png" alt="Notizie cai bologna" width="447" height="174" style="display: block; margin-left: auto; margin-right: auto;">';
 ?>
 
 <style>
-html { font-size: 22px; }
-body { padding: 1rem; }
-
-.card {
- /* background-color: dodgerblue;
-  color: white;*/
-  padding: 1rem;
-  height: 14rem;
-  border: solid 1px #ccc;
-  overflow:hidden;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;
 }
 
-
-@media (min-width: 600px) {
-  .cards { grid-template-columns: repeat(2, 1fr); }
+.grid>article {
+    border-top:1px solid #ccc;
+    padding-top:5px;
+    /*  border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);*/
+    display: flex;
+    /* <-------------- changes */
+    flex-direction: column;
+    /* <-------------- changes */
 }
 
-@media (min-width: 900px) {
-  .cards { grid-template-columns: repeat(3, 1fr); }
+.grid>articleb {
+      border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    /* <-------------- changes */
+    flex-direction: column;
+    /* <-------------- changes */
 }
 
-.cards {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-gap: <?php echo $gap ?>;
+.grid>article img {
+    max-width: 100%;
+}
+
+.text {
+    padding: 0 20px 20px;
+    flex-grow: 1;
+    display: flex;
+    /* <-------------- changes */
+    flex-direction: column;
+    /* <------x-------- changes */
+}
+
+.text>p {
+    flex-grow: 1;
+    /* <-------------- changes */
+}
+
+.text>button {
+    background: gray;
+    border: 0;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+
+figure {
+    min-height: 150px;
+}
+
+.titb{
+  text-align:center;
+}
+
+.ameno{
+    text-decoration: none !important;
 }
 </style>
 
 
-
-<div class="cards">
-  <?php for($x = 0; $x < 6; $x++) { ?>
+<main class="grid">
+    <?php for($x =0; $x < $maxbox;$x ++){ ?>
     <?php if (isset($articoli[$x]['title']) && isset($articoli[$x]['introtext'])) {?>
-  <div class="card">
+    <article>
+        <?php $imag = RartcolHelper::get_article_image($articoli[$x]['id']); ?>
 
-  <figure>
-                <!-- Photo by Quentin Dr on Unsplash -->
-                <?php $imag = RartcolHelper::get_article_image($articoli[$x]['id']); ?> 
-           
-
-             <?php if($imag != ''){ ?>
-                  <div class="imd1"><?php  echo $imag; ?></div>
+        <figure>
+            <?php if($imag != ''){ ?>
+            <div class="imd1"><?php  echo $imag; ?></div>
             <?php }else{ ?>
-              <div class="imd1"><?php  echo $imag_def; ?></div>
+            <div class="imd1"><?php  echo $imag_def; ?></div>
             <? } ?>
+        </figure>
 
-            </figure>
-
-            <?php $art_senza_image = preg_replace("/<img[^>]+\>/i", "", $articoli[$x]['introtext']);
+        <?php $art_senza_image = preg_replace("/<img[^>]+\>/i", "", $articoli[$x]['introtext']);
             
             $clear = strip_tags($art_senza_image, '');
             // Clean up things like &amp;
@@ -92,14 +124,26 @@ body { padding: 1rem; }
             $fullArticle= trim($clear);
             
             if(!strlen(trim($fullArticle))) $fullArticle = "No Titolo ";
-            $partArticle = substr($fullArticle,0,240);
-            
-            
-            ?>
+            $partArticle = substr($fullArticle,0,240); ?>
 
-            <?php echo $articoli[$x]['title']; ?><?php echo $partArticle; ?>
+        <div class="text">
+            <?php echo '<h3>'.$articoli[$x]['title'].'</h3>' ?>
+            <p><?php echo $partArticle.' ....'; ?></p>
+            <a href="index.php?option=com_content&view=article&id=<?php echo $articoli[$x]['id'] ?>">Leggi
+                l'articolo</a>
+        </div>
+    </article>
+    <?php } }?>
 
-</div>
 
- <?php } }?>
-</div>
+    <articleb>
+        <h3 class="titb">Articoli meno recenti</h3>
+        <div class="text">
+            <?php for($xa = $maxbox ;$xa < $maxmenorecnti; $xa++){ ?>
+                <?php if (isset($articoli[$xa])) {  ?>
+             <a class="ameno" href="index.php?option=com_content&view=article&id=<?php echo $articoli[$xa]['id'] ?>"><?php echo $articoli[$xa]['title'] ?></a> 
+            <?php } } ?>
+        </div>
+    </articleb>
+
+</main>
