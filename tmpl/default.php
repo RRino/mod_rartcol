@@ -65,7 +65,7 @@ use RartcolNamespace\Module\Rartcol\Site\Helper\RartcolHelper;
     display: flex;
     /* <-------------- changes */
     flex-direction: column;
-    /* <------x-------- changes */
+    /* <------x-2------- changes */
 }
 
 .text>p {
